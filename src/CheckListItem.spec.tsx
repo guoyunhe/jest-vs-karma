@@ -1,4 +1,5 @@
 import React from "react";
+import { expect } from "chai";
 import { mount } from "enzyme";
 import { CheckListItem } from "./CheckListItem";
 
@@ -14,10 +15,10 @@ describe("<CheckListItem/>", () => {
         onDelete={() => null}
       />
     );
-    expect(wrapper.find(".check-list__item").length).toBe(1);
-    expect(wrapper.find(".check-list__item--checked").length).toBe(1);
-    expect(wrapper.find(".check-list__item--12").length).toBe(1);
-    expect(wrapper.find(".check-list__item-title").text()).toBe("Foobar");
+    expect(wrapper.find(".check-list__item").length).to.equal(1);
+    expect(wrapper.find(".check-list__item--checked").length).to.equal(1);
+    expect(wrapper.find(".check-list__item--12").length).to.equal(1);
+    expect(wrapper.find(".check-list__item-title").text()).to.equal("Foobar");
   });
 
   it("shows input after clicking edit button", () => {
@@ -31,8 +32,12 @@ describe("<CheckListItem/>", () => {
         onDelete={() => null}
       />
     );
-    expect(wrapper.find(".check-list__item-title-input").exists()).toBe(false);
+    expect(wrapper.find(".check-list__item-title-input").exists()).to.equal(
+      false
+    );
     wrapper.find(".check-list__item-edit-button").simulate("click");
-    expect(wrapper.find(".check-list__item-title-input").exists()).toBe(true);
+    expect(wrapper.find(".check-list__item-title-input").exists()).to.equal(
+      true
+    );
   });
 });

@@ -1,10 +1,11 @@
 import React from "react";
+import { expect } from "chai";
 import { mount } from "enzyme";
 import { Empty } from "./Empty";
 
 describe("<Empty/>", () => {
   it("renders empty text", () => {
     const wrapper = mount(<Empty />);
-    expect(wrapper.text()).toBe("Empty");
+    expect(wrapper.text()).to.equal("Empty");
   });
 });
