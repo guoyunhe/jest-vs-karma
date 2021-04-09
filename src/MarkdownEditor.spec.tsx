@@ -1,4 +1,5 @@
 import React from "react";
+import { expect } from "chai";
 import { mount } from "enzyme";
 import { MarkdownEditor } from "./MarkdownEditor";
 import ReactMarkdown from "react-markdown";
@@ -7,8 +8,8 @@ describe("<MarkdownEditor/>", () => {
   it("renders empty result", () => {
     const wrapper = mount(<MarkdownEditor />);
 
-    expect(wrapper.find(".editor").prop("value")).toBe("");
-    expect(wrapper.find(ReactMarkdown).text()).toBe("");
+    expect(wrapper.find(".editor").prop("value")).to.equal("");
+    expect(wrapper.find(ReactMarkdown).text()).to.equal("");
   });
 
   it("renders paragraphs", () => {
@@ -21,16 +22,16 @@ describe("<MarkdownEditor/>", () => {
     for (let i = 0; i < text.length; i++) {
       const value = text.substr(0, i + 1);
       wrapper.find(".editor").simulate("change", { target: { value } });
-      expect(wrapper.find(".previewer p").length).toBe(i > 28 ? 2 : 1);
+      expect(wrapper.find(".previewer p").length).to.equal(i > 28 ? 2 : 1);
     }
 
-    expect(wrapper.find(ReactMarkdown).html()).toBe(
+    expect(wrapper.find(ReactMarkdown).html()).to.equal(
       '<div class="previewer"><p>Hello, this is a paragraph.</p><p>OMG, this is a new paragraph, you guys.</p></div>'
     );
-    expect(wrapper.find(".previewer p").first().text()).toBe(
+    expect(wrapper.find(".previewer p").first().text()).to.equal(
       "Hello, this is a paragraph."
     );
-    expect(wrapper.find(".previewer p").last().text()).toBe(
+    expect(wrapper.find(".previewer p").last().text()).to.equal(
       "OMG, this is a new paragraph, you guys."
     );
   });
@@ -110,7 +111,7 @@ describe("<MarkdownEditor/>", () => {
       },
     });
 
-    expect(wrapper.find(ReactMarkdown).find("script").exists()).toBe(false);
+    expect(wrapper.find(ReactMarkdown).find("script").exists()).to.equal(false);
   });
 
   it("does not allow <script>", () => {
@@ -120,6 +121,6 @@ describe("<MarkdownEditor/>", () => {
       target: { value: '<script>alert("hacked!")</script>' },
     });
 
-    expect(wrapper.find(ReactMarkdown).find("script").exists()).toBe(false);
+    expect(wrapper.find(ReactMarkdown).find("script").exists()).to.equal(false);
   });
 });

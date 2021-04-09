@@ -1,19 +1,25 @@
 {
   "private": true,
   "scripts": {
-    "start": "jest --watch",
-    "test": "time jest --no-cache --coverage"
+    "start": "karma start --auto-watch",
+    "test": "time karma start"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.15",
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
-    "@types/jest": "^26.0.21",
+    "@types/karma": "^6.1.0",
+    "@types/mocha": "^8.2.2",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.2",
+    "chai": "^4.3.4",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
-    "jest": "^26.6.3",
-    "ts-jest": "^26.5.4",
+    "karma": "^6.2.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-mocha": "^2.0.1",
+    "karma-typescript": "^5.5.0",
+    "mocha": "^8.3.2",
     "typescript": "^4.2.3"
   },
   "dependencies": {
